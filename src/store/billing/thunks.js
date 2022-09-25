@@ -1,7 +1,7 @@
 import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
 import { addNewEmptyNote, setActiveNote } from './';
-import { deleteNoteById, savingNewNote, setNotes, setPhotosToActiveNote, setSaving, updateNote } from './billingSlice';
+import { deleteNoteById, savingNewNote, setNotes, setPhotosToActiveNote, setSaving, setVisualizing, updateNote } from './billingSlice';
 import { fileUpload, loadNotes } from '../../helpers';
 
 export const startNewNote = () => {
@@ -80,5 +80,11 @@ export const startDeletingNote = () => {
     await deleteDoc(docRef);
 
     dispatch(deleteNoteById(note.id));
+  };
+};
+
+export const startPreviewFile = () => {
+  return async (dispatch, getState) => {
+    dispatch(setVisualizing());
   };
 };

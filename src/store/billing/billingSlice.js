@@ -7,6 +7,7 @@ export const billingSlice = createSlice({
     messageSaved: '',
     notes: [],
     active: null,
+    visualizing: false,
   },
   reducers: {
     savingNewNote: (state) => {
@@ -15,10 +16,12 @@ export const billingSlice = createSlice({
     addNewEmptyNote: (state, action) => {
       state.notes.push(action.payload);
       state.isSaving = false;
+      state.visualizing = false;
     },
     setActiveNote: (state, action) => {
       state.active = action.payload;
       state.messageSaved = '';
+      state.visualizing = false;
     },
     setNotes: (state, action) => {
       state.notes = action.payload;
@@ -26,6 +29,9 @@ export const billingSlice = createSlice({
     setSaving: (state) => {
       state.isSaving = true;
       state.messageSaved = '';
+    },
+    setVisualizing: (state) => {
+      state.visualizing = true;
     },
     updateNote: (state, action) => {
       // payload: note
@@ -41,7 +47,7 @@ export const billingSlice = createSlice({
       state.messageSaved = `${action.payload.title}, actualizada correctamente`;
     },
     setPhotosToActiveNote: (state, action) => {
-      state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
+      state.active.imageUrls = [...state.active.fileUrls, ...action.payload];
       state.isSaving = false;
     },
 
@@ -65,6 +71,7 @@ export const {
   clearNotesLogout,
   deleteNoteById,
   savingNewNote,
+  setVisualizing,
   setActiveNote,
   setNotes,
   setPhotosToActiveNote,
