@@ -43,7 +43,7 @@ export const startSaveNote = () => {
     dispatch(setSaving());
 
     const { uid } = getState().auth;
-    const { active: note } = getState().journal;
+    const { active: note } = getState().billing;
 
     const noteToFireStore = { ...note };
     delete noteToFireStore.id;
@@ -74,7 +74,7 @@ export const startUploadingFiles = (files = []) => {
 export const startDeletingNote = () => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
-    const { active: note } = getState().journal;
+    const { active: note } = getState().billing;
 
     const docRef = doc(FirebaseDB, `${uid}/billing/registers/${note.id}`);
     await deleteDoc(docRef);
