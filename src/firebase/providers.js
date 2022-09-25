@@ -49,6 +49,7 @@ export const registerUserWithEmailPassword = async ({ email, password, displayNa
       displayName,
     };
   } catch (error) {
+    console.log(error);
     return { ok: false, errorMessage: error.message };
   }
 };

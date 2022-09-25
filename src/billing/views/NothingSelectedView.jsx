@@ -15,7 +15,7 @@ export const NothingSelectedView = () => {
       </Grid>
       <Grid item xs={12}>
         <Typography color='black' variant='h5'>
-          Seleccione un archivo para realizar un carga
+          Haga click en el botón para realizar una nueva realizar una carga
         </Typography>
       </Grid>
     </Grid>
